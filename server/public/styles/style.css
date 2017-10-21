@@ -12,6 +12,10 @@ h1 {
     border-radius: 5PX;
 }
 
+#taskIn {
+    margin-top: 10PX;
+}
+
 #addTask {
     width: 135PX;
 }

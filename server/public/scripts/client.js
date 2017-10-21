@@ -51,3 +51,21 @@ $.ajax({
     alert('something went wrong');
 });
 } // end function getTasks / GET route
+//append the entire list of tasks - task comes as an array of objects
+function appendToDom(tasks){
+    $('.tBodyHere').empty();
+  // Loop through products and append to dom
+  for (var i = 0; i < tasks.length; i += 1) {
+    var task = tasks[i];
+    var $tr = $('<tr></tr>');
+    $tr.data('task', task);
+    $tr.append('<td>' + task.todo + '</td>');
+    if (task.todo == true) {
+        $tr.append('<td>Task Complete!</td>')}
+        else {
+        $tr.append('<td><input id="checkBox" type="checkbox">Mark Complete</td>');
+        }
+    $tr.append('<td><button class="deleteButton" data-id="' + task.id + '">Delete</button></td>'); // assigning an id
+    $('.tBodyHere').append($tr);
+} //end for loop
+}//end appendToDomfunction
