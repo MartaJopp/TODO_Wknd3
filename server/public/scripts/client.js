@@ -70,7 +70,7 @@ function appendToDom(tasks){
         $tr.append('<td><button type="button" class="btn btn-warning" data-id="' + task.id + '">Mark Complete</button></td>');
         }
     $tr.append('<td><button type="button" class="btn btn-danger" data-id="' + task.id + '">Delete</button></td>'); // assigning an id
-    $('.tBodyHere').append($tr);
+    $('.tBodyHere').append($tr).hide().show('slow');
 } //end for loop
 }//end appendToDomfunction
 
