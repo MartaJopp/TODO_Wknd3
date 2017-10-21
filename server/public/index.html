@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To Do!</title>
+    <link rel="stylesheet" href="vendors/bootstrap.css" />
+    <link rel="stylesheet" href="vendors/bootstrap-theme.css">
+    <link rel="stylesheet" href="styles/style.css" />
+    <script src="vendors/jquery.js"></script>
+    <script src="scripts/client.js"></script>
+
+</head>
+
+<body>
+
+    <body>
+
+        <div class="container">
+            <!-- beginheader container -->
+            <div class="row">
+                <div class="col-md-12">
+                <h1>To Do, To Do, To Do...</h1>
+            </div>
+        </div>
+        <form>
+        <div class="row">
+            <div class="col-md-10">
+<div class="form-group">
+    <label for="inputmd" id="labelId">Add To Do:</label>
+    <input class="form-control input-md" id="taskIn" type="text" placeholder="Enter task here">
+</div>
+</div>
+<div class="col-md-2" id="buttonLoc">
+    <button type="button" class="btn btn-success" id="addTask">Add Task</button> 
+</div> 
+</div> <!--end form "row"-->
+        </form><!--end form -->
+        <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Complete?</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id = "tbody">
+                <tr>
+                    <td>This is the task that needs to be done and it is long.</td>
+                <td>false</td>    
+                <td>delete</td>
+                </tr>
+                </tbody>
+                </table>
+    </body>
+
+</html>
+

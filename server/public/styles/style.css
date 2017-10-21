@@ -1,0 +1,25 @@
+h1 {
+    color: white;
+    text-align: center;
+
+}
+
+.col-md-12 {
+    margin-top: 20PX;
+    margin-bottom: 20PX;
+    background-color: rgb(66, 139, 202);
+    height:100PX;
+    border-radius: 5PX;
+}
+
+#addTask {
+    width: 135PX;
+}
+
+#labelId {
+    font-size: 20PX;
+}
+
+#buttonLoc {
+    padding-top: 32PX;
+}
