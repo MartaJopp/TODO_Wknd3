@@ -56,6 +56,7 @@ $.ajax({
 } // end function getTasks / GET route
 //append the entire list of tasks - task comes as an array of objects
 function appendToDom(tasks){
+    $('#taskIn').val('');
     $('.tBodyHere').empty();
   // Loop through products and append to dom
   for (var i = 0; i < tasks.length; i += 1) {
