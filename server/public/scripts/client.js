@@ -101,18 +101,30 @@ function taskComplete(){ //PUT request with data to true - to mark items complet
 
 function deleteTask(){
     console.log('Delete Button clicked'); 
-    var deleteId = $(this).data('id');
-console.log('delete', deleteId);
-// ajax call for delete route
-$.ajax({
-    method: 'DELETE',
-    url: '/tasks/' + deleteId
-})
-.done(function(response){
-    console.log('resonse', response);
-    getTasks();
-})
-.fail(function (error){
-    console.log('error', error)
-})
-}// end deleteTask function
+    if (confirm("Are you sure you would like to delete this task?")) {
+        var deleteId = $(this).data('id');
+        console.log('delete', deleteId); 
+        var row = $(this).closest('tr');
+        $(row).hide("drop", { direction: "down" }, "slow");
+
+        // ajax call for delete route
+    $.ajax({
+            method: 'DELETE',
+            url: '/tasks/' + deleteId
+        })
+            .done(function (response) {
+                console.log('response', response);
+            // getTasks();  
+            })
+            .fail(function (error) {
+                console.log('error', error);
+
+            })
+    
+         }
+         else {
+             return false;
+         } // end if
+          }  // end deleteTask function
+
+
