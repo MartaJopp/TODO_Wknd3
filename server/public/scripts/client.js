@@ -6,7 +6,8 @@ function readyNow() {
     getTasks(); //on load of page - load tasks
     console.log ('JQuery sourced');
     $('#addTask').on('click', addTask); //call addTask on click of button
-    $('.container').on('click', '.btn-warning', taskComplete);
+    $('.container').on('click', '.btn-warning', taskComplete); // call taskComplete on click of Mark Complete
+    $('.container').on('click', '.btn-danger', deleteTask); // call deleteTask on click of delete
 } // end readyNow function
 
 // add task to list and call function to POST to server
@@ -72,12 +73,12 @@ function appendToDom(tasks){
 } //end for loop
 }//end appendToDomfunction
 
-function taskComplete(){ //PUT request with data to true
-    console.log('Mark Complete clicked');
-    var task = $(this).data('id');
-    var toDo = $(this).closest('td').prev('td').text();
-    console.log('task ID', task);
-    console.log('toDo', toDo)
+function taskComplete(){ //PUT request with data to true - to mark items complete
+    console.log('Mark Complete clicked'); //mark complete button working
+    var task = $(this).data('id'); //naming the id of the item to mark complete
+    var toDo = $(this).closest('td').prev('td').text(); //choosing the text of the task marking complete as to keep it the same
+    console.log('task ID', task); // logging the task id
+    console.log('toDo', toDo) // logging what the previous toDo was to ensure correct
     var changedTask = {
         todo: toDo,
         completed: true
@@ -96,3 +97,21 @@ function taskComplete(){ //PUT request with data to true
 
         })
 }// end taskComplete function
+
+function deleteTask(){
+    console.log('Delete Button clicked'); 
+    var deleteId = $(this).data('id');
+console.log('delete', deleteId);
+// ajax call for delete route
+$.ajax({
+    method: 'DELETE',
+    url: '/tasks/' + deleteId
+})
+.done(function(response){
+    console.log('resonse', response);
+    getTasks();
+})
+.fail(function (error){
+    console.log('error', error)
+})
+}// end deleteTask function

@@ -37,7 +37,7 @@ router.post('/', function (req, res) { //post route with new tasks
             }); // END QUERY
         }
     }); // END POOL
-});
+}); // end post route
 
 router.get('/', function (req, res) {
     // Attempt to connect to the database
@@ -90,7 +90,34 @@ router.put('/:id', function (req, res) { // put route to update completion
             }); // END QUERY
         }
     }); // END POOL
-});
+}); // end put route
 
+router.delete('/:delete', function (req, res) { // put route to update completion
+    var taskId = req.params.delete; //only getting the id from the client I'm deleting
+
+    // Attempt to connect to the database
+    pool.connect(function (errorConnectingToDb, db, done) {
+        if (errorConnectingToDb) {
+            // There was an error and no connection was made
+            console.log('Error connecting', errorConnectingToDb);
+            res.sendStatus(500);
+        } else {
+            // connected to DB pool -1
+            var queryText = 'DELETE FROM "tasks" WHERE "id" = $1;';
+            db.query(queryText, [taskId], function (errorMakingQuery, result) {
+                // query has been sent and done is called to add connection basck
+                done(); // pool +1
+                if (errorMakingQuery) {
+                    console.log('Error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else {
+                    // query worked
+                    // Send back success!
+                    res.sendStatus(201);
+                }
+            }); // END QUERY
+        }
+    }); // END POOL
+}); // end delete route
 
 module.exports = router; //allows for other files to use
