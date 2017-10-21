@@ -3,8 +3,10 @@ console.log ('JS Sourced');
 $(document).ready(readyNow);
 
 function readyNow() {
+    getTasks(); //on load of page - load tasks
     console.log ('JQuery sourced');
     $('#addTask').on('click', addTask); //call addTask on click of button
+    $('.container').on('click', '.btn-warning', taskComplete);
 } // end readyNow function
 
 // add task to list and call function to POST to server
@@ -59,13 +61,38 @@ function appendToDom(tasks){
     var task = tasks[i];
     var $tr = $('<tr></tr>');
     $tr.data('task', task);
-    $tr.append('<td>' + task.todo + '</td>');
-    if (task.todo == true) {
-        $tr.append('<td>Task Complete!</td>')}
+    $tr.append('<td class="todo">' + task.todo + '</td>');
+    if (task.completed == true) {
+        $tr.append('<td>&#9989<span>Task Complete!</span></td>')}
         else {
-        $tr.append('<td><input id="checkBox" type="checkbox">Mark Complete</td>');
+        $tr.append('<td><button type="button" class="btn btn-warning" data-id="' + task.id + '">Mark Complete</button></td>');
         }
-    $tr.append('<td><button class="deleteButton" data-id="' + task.id + '">Delete</button></td>'); // assigning an id
+    $tr.append('<td><button type="button" class="btn btn-danger" data-id="' + task.id + '">Delete</button></td>'); // assigning an id
     $('.tBodyHere').append($tr);
 } //end for loop
 }//end appendToDomfunction
+
+function taskComplete(){ //PUT request with data to true
+    console.log('Mark Complete clicked');
+    var task = $(this).data('id');
+    var toDo = $(this).closest('td').prev('td').text();
+    console.log('task ID', task);
+    console.log('toDo', toDo)
+    var changedTask = {
+        todo: toDo,
+        completed: true
+    }
+    $.ajax({
+        method: 'PUT',
+        url: '/tasks/' + task,
+        data: changedTask
+    })
+    .done(function (response) {
+        console.log('response', response);
+        getTasks();
+    })
+        .fail(function (error) {
+            console.log('error', error);
+
+        })
+}// end taskComplete function
