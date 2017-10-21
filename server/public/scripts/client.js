@@ -105,26 +105,31 @@ function deleteTask(){
         var deleteId = $(this).data('id');
         console.log('delete', deleteId); 
         var row = $(this).closest('tr');
-        $(row).hide("drop", { direction: "down" }, "slow");
-
+        //another animation
+            $(row).animate({
+                backgroundColor: "red",
+                color: "white",
+                width: 500
+            }, 500);
+            //end another animation code here
+              //animation to slide row up
+            $(this).closest('tr').slideUp(500);
+        //animation ends here
         // ajax call for delete route
-    $.ajax({
+        $.ajax({
             method: 'DELETE',
             url: '/tasks/' + deleteId
         })
-            .done(function (response) {
-                console.log('response', response);
-            // getTasks();  
-            })
-            .fail(function (error) {
-                console.log('error', error);
+    .done(function (response) {
+        console.log('response', response);
+        // getTasks();
+    })
+        .fail(function (error) {
+            console.log('error', error);
 
-            })
-    
-         }
+        })
+    }
          else {
              return false;
          } // end if
-          }  // end deleteTask function
-
-
+     } // end delete function
