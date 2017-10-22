@@ -1,13 +1,17 @@
 h1 {
-    color: white;
+    color: rgb(66, 139, 202);
     text-align: center;
     padding-top: 10PX;
+    font-family: 'Indie Flower', cursive;
 }
 
 .col-md-12 {
     margin-top: 20PX;
     margin-bottom: 20PX;
-    background-color: rgb(66, 139, 202);
+    background-color: rgb(249,249,249);
+    border-color:  rgb(66, 139, 202);
+    border-style: inset;
+    border-width: 5PX;
     height:100PX;
     border-radius: 5PX;
     text-align: center;
@@ -15,6 +19,7 @@ h1 {
 
 #taskIn {
     margin-top: 10PX;
+    margin-bottom: 50PX;
 }
 
 #addTask {
@@ -23,15 +28,17 @@ h1 {
 
 #labelId {
     font-size: 20PX;
+    margin-top: 20PX;
 }
 
 #buttonLoc {
-    padding-top: 41PX;
+    padding-top: 63PX;
+    margin-bottom: 50PX;
 }
 
 span {
     margin-left: 10PX;
     font-weight: bold;
-    color: rgb(91,192,222);
+    color: rgb(92,184,92);
     font-size: 15PX;
 }

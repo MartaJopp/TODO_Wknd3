@@ -70,7 +70,7 @@ function appendToDom(tasks){
         $tr.append('<td><button type="button" class="btn btn-warning" data-id="' + task.id + '">Mark Complete</button></td>');
         }
     $tr.append('<td><button type="button" class="btn btn-danger" data-id="' + task.id + '">Delete</button></td>'); // assigning an id
-    $('.tBodyHere').append($tr).hide().show('slow');
+    $('.tBodyHere').append($tr);
 } //end for loop
 }//end appendToDomfunction
 
@@ -107,7 +107,7 @@ function deleteTask(){
         var row = $(this).closest('tr');
         //another animation
             $(row).animate({
-                backgroundColor: "red",
+                backgroundColor: "rgb(91,192,222)",
                 color: "white",
                 width: 500
             }, 500);
@@ -133,3 +133,5 @@ function deleteTask(){
              return false;
          } // end if
      } // end delete function
+
+     
