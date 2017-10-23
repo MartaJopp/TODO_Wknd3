@@ -1,9 +1,9 @@
 var express = require ('express');
 var app = express();
-var port = 5000 || process.env.PORT 
+var port = process.env.PORT || 5000; 
 var bodyParser = require('body-parser'); // require body-parser
 var taskRouter = require('./router/taskRouter.js'); // require taskRouter
-var poolModule = require('../modules/pool.js');
+var poolModule = require('./modules/pool.js');
 var pool = poolModule;
 
 app.use(bodyParser.urlencoded({extended:true})); //bodyParser 

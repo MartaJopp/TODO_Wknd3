@@ -3,6 +3,7 @@ var router = express.Router();
 var poolModule = require('../modules/pool.js');
 var pool = poolModule;
 var tasks = [];
+var pg = require('pg');
 
 // var pg = require('pg');
 // var config = {
