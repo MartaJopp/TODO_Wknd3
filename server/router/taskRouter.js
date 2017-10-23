@@ -1,17 +1,19 @@
 var express = require('express');
 var router = express.Router();
+var poolModule = require('../modules/pool.js');
+var pool = poolModule;
 var tasks = [];
 
-var pg = require('pg');
-var config = {
-    database: 'deneb',
-    host: 'localhost',
-    port: 5432,
-    max: 10,
-    idleTimeoutMillis: 30000
-}
+// var pg = require('pg');
+// var config = {
+//     database: 'deneb',
+//     host: 'localhost',
+//     port: 5432,
+//     max: 10,
+//     idleTimeoutMillis: 30000
+// }
 
-var pool = new pg.Pool(config);
+// var pool = new pg.Pool(config);
 
 router.post('/', function (req, res) { //post route with new tasks
     var task = req.body; // data received
