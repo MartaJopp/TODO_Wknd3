@@ -42,3 +42,7 @@ span {
     color: rgb(92,184,92);
     font-size: 15PX;
 }
+
+.whatever {
+    background-color: grey;
+}
