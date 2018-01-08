@@ -34,14 +34,14 @@ In a terminal window, navigate to the project folder once saved on your computer
 - `npm start`
 
 ```sql
-
 CREATE TABLE "tasks" (
 	"id" serial primary key,
 	"todo" character varying,
 	"completed" boolean
 	);
 
-	```
+```
+
 ## Screen Shot
 ![To Do](server/public/images/to_do.png)
 
